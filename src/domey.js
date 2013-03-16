@@ -9,7 +9,9 @@
             slice = Array.prototype.slice,
             toArray = function (obj) {
                 return slice.call(obj);
-            };
+            },
+            domeyProto; // for better minification
+
 
         function Domey (elems) {
             if (! isArray(elems)) {
@@ -21,7 +23,9 @@
             this.length = elems.length;
         }
 
-        Domey.prototype.map = function (callback) {
+        domeyProto = Domey.prototype; // for better minification
+
+        domeyProto.map = function (callback) {
             var results = [],
                 i = 0;
 
@@ -32,7 +36,7 @@
             return results;
         };
 
-        Domey.prototype.forEach = function (callback) {
+        domeyProto.forEach = function (callback) {
             this.map(callback);
             return this; // for chaining;
         };
@@ -44,7 +48,7 @@
         // - one argument prepsent and it is Object: each key-value pair
         // is interpreted as style name and value to be set for each element
         // in current nodeSet
-        Domey.prototype.css = function (style, value) {
+        domeyProto.css = function (style, value) {
 
             if ( typeof style === 'string' ) {
                 if ( typeof value === 'undefined' ) {
