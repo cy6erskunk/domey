@@ -71,6 +71,28 @@
             return this; // for chaining;
         };
 
+        domeyProto.val = function (value) {
+            if (typeof value === 'undefined') {
+                return this[0].value;
+            } else {
+                this.forEach(function (elem) {
+                    elem.value = value;
+                });
+                return this;
+            }
+        };
+
+        domeyProto.html = function (value) {
+            if (typeof value === 'undefined') {
+                return this[0].innerHTML;
+            } else {
+                this.forEach(function (elem) {
+                    elem.innerHTML = value;
+                });
+                return this;
+            }
+        };
+
         if (typeof selector === 'string') {
             if (/#[a-z0-9_\-]/.test(selector)) {
                 return new Domey(document.getElementById(selector));

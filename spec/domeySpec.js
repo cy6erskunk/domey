@@ -1,4 +1,5 @@
 describe('Domey lib', function () {
+
     describe('selectors', function () {
         var div;
 
@@ -28,6 +29,8 @@ describe('Domey lib', function () {
     });
 
     describe('utils', function () {
+        var div;
+
         beforeEach(function () {
             div = document.createElement('div');
             div.id = '#elem';
@@ -39,6 +42,7 @@ describe('Domey lib', function () {
         afterEach(function () {
             document.body.removeChild(div);
         });
+
         it('can loop over each element', function () {
             var o =  {
                 loop: function () { }
@@ -61,13 +65,14 @@ describe('Domey lib', function () {
     });
 
     describe('css', function () {
+        var div;
+
         beforeEach(function () {
             div = document.createElement('div');
             div.id = '#elem';
             div.className = 'trololo';
             div.style.width = '100px';
             div.style.height = '99px';
-            div.innerHTML = '<ul><li class="elem">1</li><li class="elem">2</li><li class="elem">3</li></ul>'
             document.body.appendChild(div);
         });
 
@@ -110,4 +115,63 @@ describe('Domey lib', function () {
             expect(domey('div.trololo').css('height')).toBe(expectedHeight);
         });
     });
+
+    describe('values', function () {
+        var input,
+            expectedValue = 'ololo-nyan';
+
+        beforeEach(function () {
+            input = document.createElement('input');
+            input.id = '#elem';
+            input.className = 'trololo';
+            input.value = expectedValue;
+            document.body.appendChild(input);
+        });
+
+        afterEach(function () {
+            document.body.removeChild(input);
+        });
+
+        it('can get value from node', function () {
+            expect(domey('#elem').val()).toBe(expectedValue);
+        })
+
+        it('can set value from node', function () {
+            var newExpectedValue = 'nyan-troll';
+            domey('#elem').val(newExpectedValue);
+            expect(domey('#elem').val()).toBe(newExpectedValue);
+        })
+    });
+
+    describe('innerHTML', function () {
+        var div,
+            expectedHTML = '<ul><li class="elem">1</li><li class="elem">2</li><li class="elem">3</li></ul>';
+
+        beforeEach(function () {
+            div = document.createElement('div');
+            div.id = '#elem';
+            div.className = 'trololo';
+            div.innerHTML = expectedHTML;
+            document.body.appendChild(div);
+        });
+
+        afterEach(function () {
+            document.body.removeChild(div);
+        });
+
+        it('can get innerHTML', function () {
+            expect(domey('#elem').html()).toEqual(expectedHTML);
+        });
+
+        it('can set innerHTML', function() {
+            var newExpectedHTML = '<ul><li class="new_elem">1</li><li class="new_elem">222</li></ul>';
+            domey('#elem').html(newExpectedHTML);
+            expect(domey('#elem').html()).toEqual(newExpectedHTML);
+        });
+    });
+
+    xdescribe('events', function () {
+
+    });
+
 });
