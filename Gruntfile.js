@@ -2,7 +2,6 @@
 module.exports = function(grunt) {
 
   // Project configuration.
-// Example configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
@@ -30,7 +29,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
 
-    // Default task(s).
+    // Default task
     grunt.registerTask('default', ['jasmine']);
 
 };
