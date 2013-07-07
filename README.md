@@ -1,3 +1,5 @@
+[![Dependency Status](https://gemnasium.com/cy6erskunk/domey.png)](https://gemnasium.com/cy6erskunk/domey)
+
 # domey
 Mostly useless jQuery-like library being written to kill some time and write some code.
 
