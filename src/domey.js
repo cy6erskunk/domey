@@ -1,5 +1,6 @@
+/* global domey:true */
 (function (window, document, undefined) {
-    window.domey = function (selector) {
+    window.domey = domey = function (selector) {
         var isArray = function (obj) {
                 return Object.prototype.toString.call(obj) === '[object Array]';
             },
@@ -10,10 +11,12 @@
             toArray = function (obj) {
                 return slice.call(obj);
             },
+            elements, // 'DOM elements' to pass to Domey constructor
             domeyProto; // for better minification
 
 
         function Domey (elems) {
+            this.length = 0; // default value
             if (! isArray(elems)) {
                 elems = [elems];
             }
@@ -24,6 +27,9 @@
         }
 
         domeyProto = Domey.prototype; // for better minification
+
+        // ### Utils
+        domey.isArray = isArray;
 
         domeyProto.map = function (callback) {
             var results = [],
@@ -95,11 +101,13 @@
 
         if (typeof selector === 'string') {
             if (/#[a-z0-9_\-]/.test(selector)) {
-                return new Domey(document.getElementById(selector));
+                elements = document.getElementById(selector);
             } else {
-                return new Domey(toArray(document.querySelectorAll(selector)));
+                elements = toArray(document.querySelectorAll(selector));
             }
+        } else {
+            elements = [];
         }
-        return new  Domey( selector.length ? selector : [selector] );
+        return new Domey(elements);
     };
 })(window, window.document);

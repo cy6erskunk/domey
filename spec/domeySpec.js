@@ -13,6 +13,21 @@ describe('Domey lib', function () {
             document.body.removeChild(div);
         });
 
+        it('doesn\'t fail on empty selector', function() {
+            result = domey();
+            expect(result.length).toBe(0);
+            expect(result[0]).toBeUndefined();
+        });
+
+        it('kinda ignores non-string selectors', function() {
+            result = domey(null);
+            expect(result.length).toBe(0);
+            expect(result[0]).toBeUndefined();
+            result = domey(1);
+            expect(result.length).toBe(0);
+            expect(result[0]).toBeUndefined();
+        });
+
         it('can get element by Id', function () {
             var d = domey('#elem'),
                 n = document.getElementById('#elem');
@@ -61,6 +76,16 @@ describe('Domey lib', function () {
                 return el.className;
             });
             expect(a.join('')).toEqual('elemelemelem');
+        });
+
+        it('can check whether something is array or not', function() {
+            expect(domey.isArray('')).toBe(false);
+            expect(domey.isArray(undefined)).toBe(false);
+            expect(domey.isArray(null)).toBe(false);
+            expect(domey.isArray(123)).toBe(false);
+            expect(domey.isArray({a:1})).toBe(false);
+            expect(domey.isArray([])).toBe(true);
+            expect(domey.isArray([1, '3'])).toBe(true);
         });
     });
 
