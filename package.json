@@ -18,6 +18,9 @@
     "DOM",
     "lib"
   ],
+  "scripts" : {
+      "test" : "grunt jasmine"
+  },
   "author": "",
   "license": "MIT"
 }
