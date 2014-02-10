@@ -19,7 +19,7 @@ module.exports = function(grunt) {
             pivotal: {
                 src: 'src/**/*.js',
                 options: {
-                    specs: 'spec/*Spec.js',
+                    specs: 'spec/*.spec.js',
                     helpers: 'spec/*Helper.js'
                 }
             }
