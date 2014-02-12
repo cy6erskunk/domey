@@ -1,6 +1,6 @@
-describe('Domey lib', function () {
+xdescribe('Domey lib', function () {
 
-    xdescribe('events', function () {
+    describe('events', function () {
 
     });
 
