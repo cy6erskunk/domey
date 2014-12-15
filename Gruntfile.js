@@ -16,11 +16,22 @@ module.exports = function(grunt) {
             }
         },
         jasmine: {
-            pivotal: {
+            vanilla: {
                 src: 'src/**/*.js',
                 options: {
                     specs: 'spec/*.spec.js',
                     helpers: 'spec/*Helper.js'
+                }
+            },
+            teamcity: {
+                src: 'src/**/*.js',
+                options: {
+                    specs: 'spec/*.spec.js',
+                    helpers: 'spec/*Helper.js',
+                    template: require('grunt-template-jasmine-teamcity'),
+                    templateOptions: {
+                        output: 'jasmine.teamcity.log'
+                    }
                 }
             }
         }
@@ -30,6 +41,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
 
     // Default task
-    grunt.registerTask('default', ['jasmine']);
+    grunt.registerTask('default', ['jasmine:vanilla']);
 
 };

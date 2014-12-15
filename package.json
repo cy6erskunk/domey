@@ -4,10 +4,10 @@
   "description": "dummy DOM lib",
   "main": "domey.js",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-cli": "~0.1.9",
-    "grunt-contrib-jasmine": "~0.6.1",
-    "grunt-contrib-uglify": "~0.3.2"
+    "grunt": "^0.4.5",
+    "grunt-contrib-jasmine": "^0.8.1",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-template-jasmine-teamcity": "^0.1.4"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,8 @@
     "DOM",
     "lib"
   ],
-  "scripts" : {
-      "test" : "grunt jasmine"
+  "scripts": {
+    "test": "grunt jasmine:vanilla"
   },
   "author": "",
   "license": "MIT"
